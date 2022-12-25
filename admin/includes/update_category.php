@@ -2,7 +2,7 @@
 
 
 
-                            <form action="" method= "POST">
+  <form action="" method= "POST">
                                 <div class="form-group">
                                     <label for="cat-title">Update Category</label>  
                                     <?php 
