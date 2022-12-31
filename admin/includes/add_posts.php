@@ -4,7 +4,7 @@
 
 
 <?php
-// include "header.php";
+include "header.php";
 
 // $connection = mysqli_connect("localhost","root","","cms_new");
 // if($connection){
@@ -38,44 +38,33 @@ if(isset($_POST['create_post'])){
     //     echo "connected succesfully !!";
     // }
 
-//  $query= "INSERT INTO posts (post_id, post_category_id, post_title, post_author, post_user, post_date, post_image, post_content, post_tags, post_comment_count, post_status, post_views_count,)";
+    $sql ="INSERT INTO `posts` (`post_category_id`, `post_title`, `post_author`, `post_image`, `post_date`, `post_content`, `post_tags`, `post_status`) 
+    VALUES ('$post_category_id', '$post_title', '$post_author', '$post_image', '$post_date', '$post_content', '$post_tags', '$post_status')";
+    $create_post_query = mysqli_query($connection,$sql);
+    // confirm($create_post_query);
+
+    if(!$create_post_query){
+        echo "Failed to connnect the database ";
+    }else{
+        echo "  successfully inserted  !!";
+    }
+
+
+
+    
  
-//  $query .="VALUES ({$post_category_id},'{$post_title}',
-//  '{$post_author}',now(),'{$post_content}','{$post_tags}','{ $post_comment_count}','{$post_status}')";
 
 
-//  $query.= VALUES ("'231', '{$post_category_id}','{$post_title}', 'javid ', 'javid123', '2022-12-25', 'nathing yet', 'demy conntent', 'goog', '234lates', 'draft', '23')";
-
-
-
-
-    $query = " INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image, post_content, post_tags,
-     post_comment_count, post_status, post_views_count) VALUES ({$post_category_id},'{$post_title}',
-     '{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{ $post_comment_count}','{$post_status}')";
+   
   
      
 
-    $create_post_query = mysqli_query($connection,$query);
-    confirm($create_post_query);
-
-    if(!$create_post_query){
-        die ("failed to connect ".mysqli_error($connection));
-    }
-
-
-
-    if(!$create_post_query){
-        echo "database not connected !!";
-        // die("Query failed  " .mysqli_error($conn));
-    }else{
-        echo "connected successfully !!";
-    }
-
+    
  
 }  ?>
 
 
-<form action="add_posts.php" method= "POST" enctype= "multipart/form-data" >
+<form action="" method= "POST" enctype= "multipart/form-data" >
     <div class="from-group">
         <label for="post_title">post_title</label>
         <input type="text" class = "form-control" name="post_title" >
@@ -104,6 +93,11 @@ if(isset($_POST['create_post'])){
         <label for="post_tags">post_tags</label>
         <input type="text" class = "form-control" name="post_tags" >
     </div>
+    <div class="from-group">
+        <label for="post_date">post_tags</label>
+        <input type="date" class = "form-control" name="post_date" >
+    </div>
+    
     <div class="from-group">
         <label for="post_content">post_content</label>
         <textarea   class = "form-control" name="post_content" cols= "30"  row= "10"> </textarea>

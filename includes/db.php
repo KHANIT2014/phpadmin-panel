@@ -1,7 +1,9 @@
 <?php 
-$connection = mysqli_connect('localhost','root','','cms');
+$connection = mysqli_connect('localhost','root','','cms-new');
 
-if($connection){
+if(!$connection){
     echo "we are connnect Data Base successfully!!  khanjavid";
+}else{
+    echo " database connected done !!";
 }
 ?>

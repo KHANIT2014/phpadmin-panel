@@ -5,11 +5,15 @@
                                 <td>Author</td>
                                 <td>title</td>
                                 <td>category</td>
-                                <td>status</td>
                                 <td>images</td>
+                                <td>status</td>
                                 <td>tags</td>
                                 <td>comments</td>
+                                <td>status</td>
                                 <td>Date</td>
+                                <td>comments</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,11 +33,14 @@ while($row = mysqli_fetch_assoc($selector_posts)){
     // $post_comments_count = $row['post_comments_count'];
     $post_status =$row['post_status'];
     $post_date = $row['post_date'];
+    $post_content =$row['post_content'];
     
     echo "<tr>";
     echo "<td> $post_id </td>";
-    echo "<td> $post_author  </td>";
+    echo "<td> $post_author </td>";
     echo "<td> $post_title </td>";
+
+   
 
     // $query= "SELECT * FROM categories WHERE cart_id = {$post_category_id} ";
     // $select_category_id = mysqli_query($connection,$query);
@@ -43,14 +50,16 @@ while($row = mysqli_fetch_assoc($selector_posts)){
 
     //     echo "<td>$cat_title</td>";
 
-    // }
-    // echo "<td> $post_category_id </td>";
+    // };
+    echo "<td> $post_category_id </td>";
     echo "<td> $post_status </td>";
-    echo "<td> $post_image </td>";
+    echo "<td><img src=''uploads/$post_image''alt= 'image'> </td>";
+    // echo "<td> $post_image </td>";
     echo "<td> $post_tags </td>";
-    // echo "<td> $post_comments_count </td>";
+    echo "<td> $post_comments_count </td>";
     echo "<td> $post_status </td>";
     echo "<td> $post_date </td>";
+    echo "<td>$post_content</td>";
     echo "<td> <a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a> </td>";
     echo "<td> <a href='posts.php?delete={$post_id}'>Delete</a> </td>";
     echo "</tr>";
