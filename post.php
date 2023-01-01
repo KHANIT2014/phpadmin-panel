@@ -60,6 +60,8 @@
         <!-- /.container -->
     </nav>
 
+    <!-- Below  Here should have to configure some codes from data base  -->
+
     <!-- Page Content -->
     <div class="container">
 
@@ -67,6 +69,13 @@
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
+
+                <?php 
+                if(isset($_GET['p_id'])){
+                    echo $_GET['p_id'];
+
+                }
+                ?>
 
                 <!-- Blog Post -->
 
@@ -101,14 +110,60 @@
 
                 <!-- Blog Comments -->
 
+
+                <?php
+                include "includes/db.php";
+                if(isset($_POST['create_comment'])){
+                    $comment_post_id = $_POST['comment_post_id'];
+                    $comment_author=$_POST['comment_author'];
+                    $comment_email=$_POST['comment_email'];
+                    $comment_content=$_POST['comment_content'];
+                    $comment_status=$_POST['comment_status'];
+                    $comment_date=$_POST['comment_date'];
+
+                    // if($connection){
+                    //     echo " databse connected";
+                    // }else{
+
+                    //     echo "database failed try again !! ";
+                    // }
+
+
+                    $sql= "INSERT INTO `comments` (`comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) 
+                    VALUES ( '45', '$comment_author', '$comment_email', '$comment_content, '$comment_status', '$comment_date')";
+
+                    $create_comment= mysqli_query($connection,$sql);
+
+                    if($create_comment){
+                        echo "data inserted successfullly !!";
+                    }else{
+                        echo "something is wrong please try again!!  ";
+                    }
+
+                    // i should fix this once it will insert in databaase it will be shown in comments section..  KHAN JAVID
+                }
+                ?>
+
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form action="post.php" method="POST">
                         <div class="form-group">
+                            <label for="comment_author">Author</label>
+                            <input type="text" name= " comment_author">
+                        
+                        </div>
+                        <div class="form-group">
+                            <label for="comment_email">Email</label>
+                            <input type="email" name= " comment_email">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="comment_contentor">Message</label>
+                            <!-- <input type="text" name= " comment_author"> -->
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
@@ -223,7 +278,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Created by KHAN JAVID &copy; Your Website 2022-23</p>
                 </div>
             </div>
             <!-- /.row -->

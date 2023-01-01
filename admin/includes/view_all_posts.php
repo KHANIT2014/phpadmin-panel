@@ -1,3 +1,5 @@
+
+
 <table class = "table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -42,13 +44,13 @@ while($row = mysqli_fetch_assoc($selector_posts)){
 
    
 
-    // $query= "SELECT * FROM categories WHERE cart_id = {$post_category_id} ";
+    // $query= "SELECT * FROM categories WHERE cart_id = $post_category_id ";
     // $select_category_id = mysqli_query($connection,$query);
     // while($row = mysqli_fetch_assoc($select_category_id)){
     //     $cat_id = $row['cat_id'];
     //     $cat_title = $row ['cat_title'];
 
-    //     echo "<td>$cat_title</td>";
+    //     echo "<td>$post_category_id</td>";
 
     // };
     echo "<td> $post_category_id </td>";

@@ -18,7 +18,10 @@ include "includes/header.php";
             <div class="col-md-8">
 
             <?php 
-            $query ="SELECT * FROM posts";
+            if(isset($_GET['category'])){
+                $post_category_id = $_GET['post_category_id'];
+            }
+            $query ="SELECT * FROM posts WHERE post_category_id = $post_category_id";
             $select_all_posts_query= mysqli_query($connection,$query);
 
             while ($row = mysqli_fetch_assoc($select_all_posts_query)) {
@@ -35,10 +38,10 @@ include "includes/header.php";
                 </h1>
                 <!-- First Blog Post -->
                 <h2>
-                    <a href="#"><?php echo $post_title; ?></a>
+                    <a href="#"><?php echo $post_title?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author; ?></a>
+                    by <a href="index.php"><?php echo $post_author ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span><?php echo $post_date ?></p>
                 <hr>
