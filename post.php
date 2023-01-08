@@ -114,12 +114,12 @@
                 <?php
                 include "includes/db.php";
                 if(isset($_POST['create_comment'])){
-                    $comment_post_id = $_POST['comment_post_id'];
+                    // $comment_post_id = $_POST['comment_post_id'];
                     $comment_author=$_POST['comment_author'];
                     $comment_email=$_POST['comment_email'];
-                    $comment_content=$_POST['comment_content'];
-                    $comment_status=$_POST['comment_status'];
-                    $comment_date=$_POST['comment_date'];
+                    // $comment_content=$_POST['comment_content'];
+                    // $comment_status=$_POST['comment_status'];
+                    // $comment_date=$_POST['comment_date'];
 
                     // if($connection){
                     //     echo " databse connected";
@@ -130,7 +130,7 @@
 
 
                     $sql= "INSERT INTO `comments` (`comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) 
-                    VALUES ( '45', '$comment_author', '$comment_email', '$comment_content, '$comment_status', '$comment_date')";
+                    VALUES ( '45', '$comment_author', '$comment_email', 'thi si, 'new status', 'new date')";
 
                     $create_comment= mysqli_query($connection,$sql);
 
@@ -150,12 +150,12 @@
                     <form action="post.php" method="POST">
                         <div class="form-group">
                             <label for="comment_author">Author</label>
-                            <input type="text" name= " comment_author">
+                            <input type="text" name= "comment_author">
                         
                         </div>
                         <div class="form-group">
                             <label for="comment_email">Email</label>
-                            <input type="email" name= " comment_email">
+                            <input type="email" name= "comment_email">
                             
                         </div>
                         <div class="form-group">

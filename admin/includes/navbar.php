@@ -56,7 +56,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Catagories</a>
+                        <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Catagories</a>
                     </li>
                     <li>
                         <a href="./comments.php"><i class="fa fa-fw fa-wrench"></i> Comments</a>
@@ -64,11 +64,15 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
-    
-                                <a href="#">Admin</a>
-                            </li>
                             <li>
-                                <a href="#">Subcriber</a>
+                            <a href="./users.php">All Users</a>
+
+                            </li>
+    
+                                
+                            
+                            <li>
+                                <a href="users.php?source=add_user">Add User</a>
                             </li>
                             <!-- <li>
                                 <a href="#">Guest User</a>   added tem user for testing purposer    
