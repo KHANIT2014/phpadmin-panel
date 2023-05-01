@@ -42,13 +42,17 @@ while($row = mysqli_fetch_assoc($selector_comments)){
     // echo "<td> $comment_post_id </td>";
     echo "<td> $comment_author </td>";
 
+    //  We would be update the same tags in the front line updated lines
+
    
 
     // // $query= "SELECT * FROM categories WHERE cart_id = $post_category_id ";
     // // $select_category_id = mysqli_query($connection,$query);
     // // while($row = mysqli_fetch_assoc($select_category_id)){
     // //     $cat_id = $row['cat_id'];
-    // //     $cat_title = $row ['cat_title'];
+    // //     $cat_title = $row ['cat_title']
+
+    // there is some important tasks added in this programme by khan javid
 
     // //     echo "<td>$post_category_id</td>";
 

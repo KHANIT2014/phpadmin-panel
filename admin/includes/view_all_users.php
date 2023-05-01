@@ -4,43 +4,38 @@
                             <thead>
                                 <tr>
                                 <td>ID</td>
-                                <td>Author</td>
-                                <td>title</td>
-                                <td>category</td>
-                                <td>images</td>
-                                <td>status</td>
-                                <td>tags</td>
-                                <td>comments</td>
-                                <td>status</td>
+                                <td>username</td>
+                                <td>FristName</td>
+                                <td>LastName</td>
+                                <td>Email</td>
+                                <td>Image</td>
+                                <td>Role</td>
                                 <td>Date</td>
-                                <td>comments</td>
-                                <td>Edit</td>
-                                <td>Delete</td>
+                                
                                 </tr>
                             </thead>
                             <tbody>
 <?php 
 
-$query = "SELECT * FROM posts";
-$selector_posts = mysqli_query($connection,$query);
-while($row = mysqli_fetch_assoc($selector_posts)){
-    $post_id = $row['post_id'];
-    $post_author = $row['post_author'];
+$query = "SELECT * FROM users";
+$selector_users = mysqli_query($connection,$query);
+while($row = mysqli_fetch_assoc($selector_users)){
+    $user_id = $row['user_id'];
+    $username = $row['username'];
 
-    $post_title = $row['post_title'];
-    $post_category_id = $row['post_category_id'];
-    $post_status = $row['post_status'];
-    $post_image = $row['post_image'];
-    $post_tags = $row['post_tags'];
+    $user_password = $row['user_password'];
+    $fristname = $row['user_fristname'];
+    $lastname = $row['user_lastname'];
+    $user_email = $row['user_email'];
+    $user_image = $row['user_image'];
     // $post_comments_count = $row['post_comments_count'];
-    $post_status =$row['post_status'];
-    $post_date = $row['post_date'];
-    $post_content =$row['post_content'];
+    $post_status =$row['user_role'];
+   
     
     echo "<tr>";
-    echo "<td> $post_id </td>";
-    echo "<td> $post_author </td>";
-    echo "<td> $post_title </td>";
+    echo "<td> $user_id </td>";
+    echo "<td> $username </td>";
+    echo "<td> $fristname </td>";
 
    
 
@@ -49,21 +44,18 @@ while($row = mysqli_fetch_assoc($selector_posts)){
     // while($row = mysqli_fetch_assoc($select_category_id)){
     //     $cat_id = $row['cat_id'];
     //     $cat_title = $row ['cat_title'];
+    //      NEED to update the same tags as well as applied in the applications
 
     //     echo "<td>$post_category_id</td>";
 
     // };
-    echo "<td> $post_category_id </td>";
-    echo "<td> $post_status </td>";
-    echo "<td><img src=''uploads/$post_image''alt= 'image'> </td>";
+    echo "<td> $lastname </td>";
+    echo "<td> $user_email </td>";
+    echo "<td><img src=''uploads/$user_image''alt= 'image'> </td>";
     // echo "<td> $post_image </td>";
-    echo "<td> $post_tags </td>";
-    echo "<td> $post_comments_count </td>";
-    echo "<td> $post_status </td>";
-    echo "<td> $post_date </td>";
-    echo "<td>$post_content</td>";
-    echo "<td> <a href='users.php?source=edit_user&p_id={$post_id}'>Edit</a> </td>";
-    echo "<td> <a href='users.php?delete={$post_id}'>Delete</a> </td>";
+    
+    echo "<td> <a href='users.php?source=edit_user&edit_user={$user_id}'>Edit</a> </td>";
+    echo "<td> <a href='users.php?delete={$user_id}'>Delete</a> </td>";
     echo "</tr>";
    
 }
@@ -89,8 +81,9 @@ while($row = mysqli_fetch_assoc($selector_posts)){
 
                         <?php
                         if(isset($_GET['delete'])){
-                            $this_post_id = $_GET['delete'];
-                            $query = "DELETE FROM posts WHERE post_id= {$this_post_id}";
-                            $delete_query = mysqli_query($connection,$query);
+                            $this_user_id = $_GET['delete'];
+                            $query = "DELETE FROM users WHERE  user_id= {$this_user_id}";
+                            $delete_user_query = mysqli_query($connection,$query);
+                            header("location:users.php");
                         }
                         ?>

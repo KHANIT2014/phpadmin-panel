@@ -58,6 +58,7 @@ if(isset($_POST['update_post'])){
 
      if($update_data){
         echo "Data updated successfully !!";
+        header("location:posts.php");
      }else{
         echo "something is wrong !! ";
      }

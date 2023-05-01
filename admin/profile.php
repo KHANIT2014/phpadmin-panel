@@ -1,36 +1,25 @@
-
-
-
-
-
+<?php  include "includes/header.php"; ?>
 <?php
-include "db.php";
+if(isset($_SESSION['username'])){
+    $username=  $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE username= '{$username}'";
+    $select_profile_query = mysqli_query($connection,$query);
 
-// // $connection = mysqli_connect("localhost","root","","cms_new");
-// // if($connection){
-// //     echo " successfully connected  !!";
-// // }
+    while($row = mysqli_fetch_array($select_profile_query)){
+        $user_id = $row['user_id'];
+        $username = $row['username'];
+    
+        $user_password = $row['user_password'];
+        $fristname = $row['user_fristname'];
+        $lastname = $row['user_lastname'];
+        $user_email = $row['user_email'];
+        $user_image = $row['user_image'];
+        $post_status =$row['user_role'];
 
-if(isset($_GET['edit_user'])){
-     $the_user_id = $_GET['edit_user'];
-
-     $query = "SELECT * FROM users WHERE user_id =$the_user_id";
-$selector_users_query = mysqli_query($connection,$query);
-while($row = mysqli_fetch_assoc($selector_users_query)){
-    $user_id = $row['user_id'];
-    $username = $row['username'];
-
-    $user_password = $row['user_password'];
-    $fristname = $row['user_fristname'];
-    $lastname = $row['user_lastname'];
-    $user_email = $row['user_email'];
-    $user_image = $row['user_image'];
-    // $post_comments_count = $row['post_comments_count'];
-    $post_status =$row['user_role'];
+    }
 }
-}
-
-
+?>
+<?php
 if(isset($_POST['edit_user'])){
     $username = $_POST['username'];
     $user_pass = $_POST['user_password'];
@@ -91,12 +80,28 @@ if(isset($_POST['edit_user'])){
 
     
  
-} 
- ?>
+}
+?>
 
 
 
-<form action="" method= "POST" enctype= "multipart/form-data" >
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <?php include "includes/navbar.php";  ?>
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                    <h1 class="page-header">
+                            Welcom To Admin Panel
+                            <small>  </small>
+
+                        </h1>
+                        <form action="" method= "POST" enctype= "multipart/form-data" >
     <div class="from-group">
         <label for="username">username</label>
         <input  type="text" value="<?php echo $username; ?>" class = "form-control" name="username" >
@@ -144,27 +149,14 @@ if(isset($_POST['edit_user'])){
         <input  class="btn btn-primary"  type="submit"  name="edit_user" value = "Publish_post" >
     </div>
   
-</form>
+</form>                        </div>
+                </div>
+                <!-- /.row -->
 
-<!-- <form action="" method ="POST"  enctype= "multipart/form-data" >
-    <label for="">uploading</label><br>
-    <input type="file" name="file"><br>
-    <input type="submit" name="upload" value = "upload_file"  >
-</form> -->
+            </div>
+            <!-- /.container-fluid -->
 
-<!-- <div class="from-group">
-        <select name="" id="">
-            <?php
-        $query = "SELECT * FROM users  "; 
-        $select_users= mysqli_query($connection,$query);
-        confirm($select_users);
+        </div>
+</div>
+        <!-- /#page-wrapper -->
 
-        
-        while ($row = mysqli_fetch_assoc($select_users)) {
-            $cat_id = $row['cat_id'];
-            $cat_title = $row ['cat_title'];
-
-            echo " <option  value='$cat_id' >$cat_title</option> ";
-        }
-            ?>
-        </select> ***/ -->

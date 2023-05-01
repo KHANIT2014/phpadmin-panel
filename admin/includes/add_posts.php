@@ -4,7 +4,8 @@
 
 
 <?php
-include "header.php";
+// include "header.php";
+include "db.php";
 
 // $connection = mysqli_connect("localhost","root","","cms_new");
 // if($connection){
@@ -28,7 +29,7 @@ if(isset($_POST['create_post'])){
 
     $post_tags = $_POST['post_tags'];
     $post_content = $_POST['post_content'];
-    $post_date = date('d-m-y');
+    // $post_date = date('d-m-y');
     // $post_comment_count = 4;
     
 
@@ -43,7 +44,7 @@ if(isset($_POST['create_post'])){
     // $sql ="INSERT INTO `posts` (`post_category_id`, `post_title`, `post_author`, `post_image`, `post_date`, `post_content`, `post_tags`, `post_status`) 
     // VALUES ('$post_category_id', '$post_title', '$post_author', '$post_image', 'now()', '$post_content', '$post_tags', '$post_status')";
     $create_post_query = mysqli_query($connection,$sqlin);
-    // confirm($create_post_query);
+    confirm($create_post_query);
 
     if(!$create_post_query){
         echo "Failed to connnect the database ";

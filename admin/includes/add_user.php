@@ -39,12 +39,13 @@ if(isset($_POST['create_post'])){
 
    
     $create_post_query = mysqli_query($connection,$sqlin);   
-    confirm($create_post_query);
+    // confirm($create_post_query);
 
     if(!$create_post_query){
         echo "Failed to connnect the database ";
     }else{
         echo "  successfully inserted  !!";
+        header("location:users.php");
     }
 
 
@@ -79,6 +80,13 @@ if(isset($_POST['create_post'])){
     <div class="from-group">
         <label for="user_lastname">user_lastname</label>
         <input type="text" class = "form-control" name="user_lastname" >
+    </div>
+    <div class="form-group">
+        <select name="user_role" id="">
+            <option value="subscriber">select options</option>
+            <option value="admin">admin</option>
+            <option value="subscriber">subscriber</option>
+        </select>
     </div>
     <div class="from-group">
         <label for="">image</label>

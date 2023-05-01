@@ -58,7 +58,7 @@ while($row = mysqli_fetch_assoc($selector_posts)){
     echo "<td><img src=''uploads/$post_image''alt= 'image'> </td>";
     // echo "<td> $post_image </td>";
     echo "<td> $post_tags </td>";
-    echo "<td> $post_comments_count </td>";
+    // echo "<td> $post_comments_count </td>";
     echo "<td> $post_status </td>";
     echo "<td> $post_date </td>";
     echo "<td>$post_content</td>";
