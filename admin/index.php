@@ -16,7 +16,7 @@
                             Welcom To Admin Panel
                            
                             
-                            <small><?php echo $_SESSION['username'] ?></small>
+                            <!-- <small><?php echo $_SESSION['username'] ?></small> -->
                         </h1>
                 </div>
                        
@@ -140,6 +140,11 @@
                 <!-- /.row -->
 
                 <?php
+                 $query_published = "SELECT * FROM posts WHERE post_status ='Published' ";
+                 $select_all_published_posts= mysqli_query($connection,$query_published);
+                 $published_count = mysqli_num_rows($select_all_published_posts);
+
+
                 $query_draft = "SELECT * FROM posts WHERE post_status ='draft' ";
                 $select_all_draft_posts= mysqli_query($connection,$query_draft);
                 $draft_count = mysqli_num_rows($select_all_draft_posts);
@@ -167,11 +172,11 @@
           ['Data', 'Counts'],
 
           <?php
-          $elements_text = ['Active Posts','draft_posts' ,'unapprove','subscriber', 'comments','users','categories'];
-          $elements_count= [$post_count,$draft_count,$unapprove_count,$subscriber_count,$comment_count,$user_count,$category_count];
+          $elements_text = ['All Posts','Active Posts','draft_posts' ,'unapprove','subscriber', 'comments','users','categories'];
+          $elements_count= [$post_count,$published_count,$draft_count,$unapprove_count,$subscriber_count,$comment_count,$user_count,$category_count];
 
 
-          for($i=0;$i<5; $i++){
+          for($i=0;$i<8; $i++){
             echo "['{$elements_text[$i]}'" . ",". "{$elements_count[$i]}],";
 
           }

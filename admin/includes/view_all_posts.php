@@ -8,12 +8,12 @@
                                 <td>title</td>
                                 <td>category</td>
                                 <td>images</td>
-                                <td>status</td>
+                                <!-- <td>status</td> -->
                                 <td>tags</td>
-                                <td>comments</td>
-                                <td>status</td>
+                                <td>Status</td>
                                 <td>Date</td>
                                 <td>comments</td>
+                                <!-- <td>comments</td> -->
                                 <td>Edit</td>
                                 <td>Delete</td>
                                 </tr>
@@ -54,7 +54,7 @@ while($row = mysqli_fetch_assoc($selector_posts)){
 
     // };
     echo "<td> $post_category_id </td>";
-    echo "<td> $post_status </td>";
+    // echo "<td> $post_status </td>";
     echo "<td><img src=''uploads/$post_image''alt= 'image'> </td>";
     // echo "<td> $post_image </td>";
     echo "<td> $post_tags </td>";

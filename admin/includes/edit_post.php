@@ -95,9 +95,26 @@ if(isset($_POST['update_post'])){
         <input value="<?php echo $post_author; ?>" type="text" class = "form-control" name="post_author" >
     </div>
     <div class="from-group">
+    <select name="post_status" id="">
+        <option value='<?php echo $post_status ?>'><?php  echo $post_status;?></option>
+
+        <?php
+        if($post_status == 'publishec'){
+            echo "<option  value= 'draft'>Draft</option> ";
+        }else {
+            echo "<option value= 'published' >Published</option> ";
+        }
+        
+        ?>
+    </select>
+    </div>
+
+
+
+    <!-- <div class="from-group">
         <label for="post_status">post_status</label>
         <input value="<?php echo $post_status; ?>"  type="text" class = "form-control" name="post_status" >
-    </div>
+    </div> -->
     <div class="from-group">
         <!-- <img src="uploads/$post_image" alt="images"> -->
 
@@ -117,11 +134,8 @@ if(isset($_POST['update_post'])){
         <input value="<?php echo $post_date; ?>" type="date" class = "form-control" name="post_date" >
     </div>
     <div class="from-group">
-        <label for="post_content">post_content</label>
-        <textarea   class = "form-control" name="post_content" cols= "30"  row= "10">
-         <?php echo $post_content; ?>
-            
-    </textarea>
+        <label for="summernote">post_content</label>
+        <textarea   class = "form-control" name="post_content" id="summernote" cols= "30"  row= "10"></textarea>
     </div>
     <div class="from-group">
         <input  class="btn btn-primary"  type="submit"  name="update_post" value = "Publish_post" >
